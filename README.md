@@ -40,3 +40,8 @@
 1. Ability to search for any location in the world
 1. Display Weather Metrics
 1. Include heat maps with actual maps - <https://wiki.openstreetmap.org/wiki/API_v0.6>
+
+## Wire Frame Image
+
+This is our current wire frame prototype design:
+![Air Care Wire Frame Image](./assets/images/air_care_wire_frame.svg)
