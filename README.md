@@ -39,4 +39,4 @@
 1. Include charts or graphs
 1. Ability to search for any location in the world
 1. Display Weather Metrics
-1. Include heatmaps with actual maps - <https://wiki.openstreetmap.org/wiki/API_v0.6>
+1. Include heat maps with actual maps - <https://wiki.openstreetmap.org/wiki/API_v0.6>
