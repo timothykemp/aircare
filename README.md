@@ -8,8 +8,7 @@
 
 1. COVID Testing Sites - <https://developer.here.com/documentation>
 1. COVID Metrics - <https://covidtracking.com/data/api>
-1. Coordinates Lookup - <https://locationiq.com/docs#search-forward-geocoding>
-1. Air Quality Metrics - <https://docs.breezometer.com/api-documentation/air-quality-api/v2/#current-conditions>
+1. Air Quality Metrics - <https://api-docs.iqair.com/?version=latest>
 
 ## MVP Features To Include
 
