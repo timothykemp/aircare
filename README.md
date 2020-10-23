@@ -9,6 +9,7 @@
 1. COVID Testing Sites - <https://developer.here.com/documentation>
 1. COVID Metrics - <https://covidtracking.com/data/api>
 1. Air Quality Metrics - <https://api-docs.iqair.com/?version=latest>
+1. Weather & Pollen Metrics - <https://www.weatherbit.io/api>
 
 ## MVP Features To Include
 
