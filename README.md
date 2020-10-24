@@ -19,6 +19,9 @@
     1. By ZIP Code
     1. By City, State
     1. By Address
+1. Buttons on city search panel to choose between Air Quality or COVID metrics
+1. Display a maximum of 5 cities in the panel on the left
+1. Ability to delete a city from the saved cities
 1. Lookup coordinates of location using Location IQ API to be used with other APIs
 1. Ability to choose date range
     1. Drop down choices of day, week, month, year
