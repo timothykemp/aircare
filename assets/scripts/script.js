@@ -1,9 +1,16 @@
 $(document).ready(function () {
 
-    var searchInput = $("#search-city").val().trim();
-    console.log(searchInput);
+    function locationSearch() { 
+        $("#search-city").on("click", function (event) {
+            event.preventDefault();
+            var searchInput = $("#city-text").val().trim();
+            console.log(searchInput);
 
+        })
+    }
+    locationSearch();
 
+  
 $("#searchTerm").keypress(function(event) { 
 	
 	if (event.keyCode === 13) { 
