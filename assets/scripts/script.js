@@ -1,3 +1,8 @@
+$(document).ready(function () {
+
+    var searchInput = $("#search-city").val().trim();
+    console.log(searchInput);
+
 
 $("#searchTerm").keypress(function(event) { 
 	
@@ -47,12 +52,7 @@ function getCurrentConditions (response) {
    
   }
 
-$(document).ready(function () {
 
-
-
-    var searchInput = $("#search-city").val().trim();
-    console.log(searchInput);
 
     // var queryURL = "https://api.airvisual.com/v2/states?country=usa&key=bc4dec27-7130-4a22-88ca-f37ecbcfc5f9";
     // http://api.airvisual.com/v2/nearest_city?key=your_key
