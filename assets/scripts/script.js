@@ -1,63 +1,45 @@
 $(document).ready(function () {
 
-    function locationSearch() { 
-        $("#search-city").on("click", function (event) {
-            event.preventDefault();
-            var searchInput = $("#city-text").val().trim();
-            console.log(searchInput);
+    $("#search-form").on("submit", function (event) {
+        event.preventDefault();
+        var searchInput = $("#city-text").val().trim();
 
-        })
+        console.log(searchInput);
+
+    })
+
+
+
+    var queryURL = " https://api.covidtracking.com/v1/us/current.json";
+
+    $.ajax({
+        type: "GET",
+        url: queryURL,
+        dataType: "JSON",
+        success: function (response) {
+            console.log(response);
+        }
+    });
+
+    function getCurrentConditions(response) {
+
+        $('#currentCity').empty();
+
+        const card = $("<div>").addClass("card");
+        const city = $("<h4>").addClass("card-title").text(response.name);
+        const cityDate = $("<h4>").addClass("card-title").text(date.toLocaleDateString('en-US'));
+        const positive = $("<p>").addClass("card-text current-positive").text("positive: ");
+        const negitive = $("<p>").addClass("card-text current-negitive").text("negitive: ");
+        const pending = $("<p>").addClass("card-text current-pending").text("pending: ");
+        const death = $("<p>").addClass("card-text current-death").text("death: ");
+        const recovered = $("<p>").addClass("card-text current-recovered").text("recovered: ");
+
+
+        city.append(cityDate)
+        card.append(city, positive, negitive, pending, death, recovered);
+        $("#currentCity").append(card)
+
     }
-    locationSearch();
-
-  
-$("#searchTerm").keypress(function(event) { 
-	
-	if (event.keyCode === 13) { 
-		event.preventDefault();
-		$("#searchBtn").click(); 
-	} 
-});
-
-$("#searchBtn").on("click", function() {
-
-  $('#covidTrackingH5').addClass('show');
-
-  city = $("#searchTerm").val();
-  
-  $("#searchTerm").val("");  
-});
-
-var queryURL = " https://api.covidtracking.com/v1/us/current.json";
-
-$.ajax({
-    type: "GET",
-    url: queryURL,
-    dataType: "JSON",
-    success: function (response) {
-        console.log(response);
-    }
-});
-
-function getCurrentConditions (response) {
-
-    $('#currentCity').empty();
-
-     const card = $("<div>").addClass("card");
-     const city = $("<h4>").addClass("card-title").text(response.name);
-     const cityDate = $("<h4>").addClass("card-title").text(date.toLocaleDateString('en-US'));
-     const positive = $("<p>").addClass("card-text current-positive").text("positive: ");
-     const negitive = $("<p>").addClass("card-text current-negitive").text("negitive: ");
-     const pending = $("<p>").addClass("card-text current-pending").text("pending: ");
-     const death = $("<p>").addClass("card-text current-death").text("death: ");
-     const recovered = $("<p>").addClass("card-text current-recovered").text("recovered: ");
-
-     
-    city.append(cityDate)
-    card.append(city, positive, negitive, pending, death, recovered);
-    $("#currentCity").append(card)
-   
-  }
 
 
 

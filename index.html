@@ -8,11 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
     <!-- Bulma CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
 
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
-        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/styles/style.css">
@@ -41,60 +38,67 @@
         <div class="container">
             <div class="columns">
 
-                <!-- Search bar and saved cities -->
-                <div class="column">
+                <!-- Search panel and saved cities section -->
+                <div class="column is-one-quarter">
+                    <div class="has-background-white box">
 
+                        <!-- City search form -->
+                        <form id="search-form">
+                            <div class="field-label is-size-6 has-text-left">
+                                <label class="label">Search for a City:</label>
+                            </div>
+                            <div class="field has-addons">
+                                <div class="control is-expanded">
+                                    <input class="input is-small" type="text" placeholder="City Name" id="city-text">
+                                </div>
+                                <div class="control">
+                                    <button class="button is-info is-small" id="search-city">
+                                        <span class="icon is-small is-right">
+                                            <i class="fas fa-search-location"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Saved cities list -->
+                        <div class="city-list box">
+                            <ul id="city-list"></ul>
+                        </div>
+
+                    </div>
                 </div>
 
-                <!-- Metrics and map group -->
+                <!-- Metrics and map section -->
                 <div class="column">
+                    <div class="has-background-white box">
 
+                        <div class="columns">
+
+                            <div class="column is-two-fifths">
+                                <div class="box">
+                                    <ul id="city-list"></ul>
+                                </div>
+                            </div>
+
+                            <div class="column">
+                                <div class="box">
+                                    <ul id="city-list"></ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
                 </div>
+
+
+
             </div>
 
 
 
-
-
-
-
-
             <div class="tile is-ancestor">
-
-                <div class="tile is-parent is-vertical is-3">
-
-                    <article class="tile is-child box">
-
-                        <div class="field-label is-size-6 has-text-left">
-                            <label class="label">Search for a City:</label>
-                        </div>
-
-                        <div class="field has-addons">
-                            <div class="control is-expanded">
-                                <input class="input is-small" type="text" placeholder="City Name" id="city-text">
-                            </div>
-                            <div class="control">
-                                <button class="button is-info is-small" id="search-city">
-                                    <span class="icon is-small is-right">
-                                        <i class="fas fa-search-location"></i>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="tile is-vertical is-parent">
-
-                            <div class="tile is-child box">
-                                <ul id="city-list">
-                                </ul>
-                            </div>
-
-
-                        </div>
-
-                    </article>
-
-                </div>
 
                 <div class="tile is-parent is-vertical is-9">
 
@@ -141,6 +145,11 @@
 
     <!-- Moment.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <!-- Font Awesome js -->
+    <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
+        integrity="sha384-9/D4ECZvKMVEJ9Bhr3ZnUAF+Ahlagp1cyPC7h5yDlZdXs4DQ/vRftzfd+2uFUuqS"
+        crossorigin="anonymous"></script>
 
     <!-- Custom JS -->
     <script src="./assets/scripts/script.js"></script>
