@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 
     <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/styles/style.css">
@@ -37,7 +38,26 @@
 
     <!-- Main section of page -->
     <main>
-        <div class="container is-max-desktop">
+        <div class="container">
+            <div class="columns">
+
+                <!-- Search bar and saved cities -->
+                <div class="column">
+
+                </div>
+
+                <!-- Metrics and map group -->
+                <div class="column">
+
+                </div>
+            </div>
+
+
+
+
+
+
+
 
             <div class="tile is-ancestor">
 
@@ -50,24 +70,25 @@
                         </div>
 
                         <div class="field has-addons">
-                            <div class="control">
+                            <div class="control is-expanded">
                                 <input class="input is-small" type="text" placeholder="City Name" id="city-text">
                             </div>
                             <div class="control">
-                                <a class="button is-info is-small" id="search-city">
-                                    Search
-                                </a>
+                                <button class="button is-info is-small" id="search-city">
+                                    <span class="icon is-small is-right">
+                                        <i class="fas fa-search-location"></i>
+                                    </span>
+                                </button>
                             </div>
                         </div>
 
                         <div class="tile is-vertical is-parent">
 
                             <div class="tile is-child box">
-                                <p class="lead">City 1</p>
+                                <ul id="city-list">
+                                </ul>
                             </div>
-                            <div class="tile is-child box">
-                                <p class="lead">City 2</p>
-                            </div>
+
 
                         </div>
 
@@ -79,18 +100,18 @@
 
                     <article class="tile is-child box">
                         <div class="tile is-parent">
-                            <article class="tile is-child is-6 box">
+                            <article class="tile is-child is-4 box">
                                 <p class="title is-size-4">Metrics</p>
                                 <img src="https://via.placeholder.com/300">
                             </article>
-                            <article class="tile is-child is-6 box">
-                                <p class="title is-size-4">Map</p>
+                            <article class="tile is-child is-8 box">
+                                <p class="title is-size-3">Map</p>
                                 <!-- <img src="https://via.placeholder.com/300"> -->
                                 <!-- added map here raihan-->
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d25895663.485556163!2d-95.665!3d37.599999999999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1603474149931!5m2!1sen!2sus"
-                                    width="300" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-                                    tabindex="0"></iframe>
+                                    width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""
+                                    aria-hidden="false" tabindex="0"></iframe>
                             </article>
                         </div>
                     </article>
@@ -123,7 +144,6 @@
 
     <!-- Custom JS -->
     <script src="./assets/scripts/script.js"></script>
-
 
 </body>
 
