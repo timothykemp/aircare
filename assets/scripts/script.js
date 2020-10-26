@@ -11,13 +11,22 @@ $(document).ready(function () {
         }
     });
 
+<<<<<<< HEAD
     if (arr.length > 0) { 
         airqualityMetrics(arr[arr.length - 1]);
+=======
+    if (arr.length > 0) {
+>>>>>>> origin
         arr.forEach(name => {
             createCitylist(name);
         });
     }
+<<<<<<< HEAD
     
+=======
+
+
+>>>>>>> origin
     $("#search-form").on("submit", function (event) {
         event.preventDefault();
         var searchInput = $("#city-text").val().trim();
@@ -26,11 +35,17 @@ $(document).ready(function () {
             createCitylist(searchInput);
             arr.push(searchInput);
             localStorage.setItem("city", JSON.stringify(arr));
+<<<<<<< HEAD
             airqualityMetrics(searchInput);
         }
     });
+=======
+            // getCurrentConditions();
+        }
+    })
+>>>>>>> origin
 
-    function createCitylist(name) { 
+    function createCitylist(name) {
         var id = 'btn' + name
         var li = $("<li >");
         var btn = $('<button />', {
@@ -52,13 +67,19 @@ $(document).ready(function () {
         $("#city-list").append(li);
 
         li.on("click", function (event) {
+<<<<<<< HEAD
             event.preventDefault();    
             airqualityMetrics(name);
+=======
+            event.preventDefault();
+            name = $(this).text();
+            console.log(name);
+>>>>>>> origin
         });
     }
 
     function getCurrentConditions(response) {
-        console.log(searchInput);  
+        console.log(searchInput);
         getCurrentConditions();
 
     }
@@ -146,7 +167,7 @@ $(document).ready(function () {
 
 
 // $(document).ready(function () {
-   
+
 //     var arr = JSON.parse(localStorage.getItem("city")) || [];
 
 //         $("#search-city").on("click", function (event) {
@@ -160,7 +181,7 @@ $(document).ready(function () {
 //             }
 
 //         });
-    
+
 //     function createCitylist(name) { 
 //         var id = 'btn' + name
 //         var li = $("<li >");
@@ -182,7 +203,7 @@ $(document).ready(function () {
 //         $("#city-list").append(li);
 //     }
 
-  
+
 
     // var queryURL = "https://api.airvisual.com/v2/states?country=usa&key=bc4dec27-7130-4a22-88ca-f37ecbcfc5f9";
     // http://api.airvisual.com/v2/nearest_city?key=your_key
