@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
 
     var arr = JSON.parse(localStorage.getItem("city")) || [];
@@ -18,6 +17,7 @@ $(document).ready(function () {
         })
     }
     
+
     $("#search-form").on("submit", function (event) {
         event.preventDefault();
         var searchInput = $("#city-text").val().trim();
@@ -57,6 +57,25 @@ $(document).ready(function () {
             console.log(name);         
         });
     }
+
+    function getCurrentConditions(response) {
+
+        getCurrentConditions();
+
+    })
+
+
+
+    var queryURL = " https://api.covidtracking.com/v1/us/current.json";
+
+    $.ajax({
+        type: "GET",
+        url: queryURL,
+        dataType: "JSON",
+        success: function (response) {
+            console.log(response);
+        }
+    });
 
     function getCurrentConditions(response) {
 
@@ -104,6 +123,7 @@ $(document).ready(function () {
 
 
 });
+
 
 
 
@@ -171,4 +191,5 @@ $(document).ready(function () {
 
 
 // });
+
 
