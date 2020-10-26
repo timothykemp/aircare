@@ -1,32 +1,16 @@
 $(document).ready(function () {
 
     var arr = JSON.parse(localStorage.getItem("city")) || [];
-    var queryURL = " https://api.covidtracking.com/v1/us/current.json";
-    $.ajax({
-        type: "GET",
-        url: queryURL,
-        dataType: "JSON",
-        success: function (response) {
-            console.log(response);
-        }
-    });
 
-<<<<<<< HEAD
+
     if (arr.length > 0) { 
         airqualityMetrics(arr[arr.length - 1]);
-=======
-    if (arr.length > 0) {
->>>>>>> origin
-        arr.forEach(name => {
+        arr.forEach(name => { 
             createCitylist(name);
-        });
+        })
     }
-<<<<<<< HEAD
     
-=======
 
-
->>>>>>> origin
     $("#search-form").on("submit", function (event) {
         event.preventDefault();
         var searchInput = $("#city-text").val().trim();
@@ -35,15 +19,10 @@ $(document).ready(function () {
             createCitylist(searchInput);
             arr.push(searchInput);
             localStorage.setItem("city", JSON.stringify(arr));
-<<<<<<< HEAD
+
             airqualityMetrics(searchInput);
         }
     });
-=======
-            // getCurrentConditions();
-        }
-    })
->>>>>>> origin
 
     function createCitylist(name) {
         var id = 'btn' + name
@@ -67,14 +46,9 @@ $(document).ready(function () {
         $("#city-list").append(li);
 
         li.on("click", function (event) {
-<<<<<<< HEAD
             event.preventDefault();    
             airqualityMetrics(name);
-=======
-            event.preventDefault();
-            name = $(this).text();
-            console.log(name);
->>>>>>> origin
+
         });
     }
 
@@ -136,27 +110,9 @@ $(document).ready(function () {
 
         city.append(cityDate)
         card.append(city, positive, negitive, pending, death, recovered);
-        $("#currentCity").append(card)
+        $("#currentCity").append(card);
 
     }
-
-
-
-    // var queryURL = "https://api.airvisual.com/v2/states?country=usa&key=bc4dec27-7130-4a22-88ca-f37ecbcfc5f9";
-    // http://api.airvisual.com/v2/nearest_city?key=your_key
-
-    // var queryURL = "https://api.airvisual.com/v2/nearest_city?key=bc4dec27-7130-4a22-88ca-f37ecbcfc5f9";
-    // var queryURL = "https://api.weatherbit.io/v2.0/current/airquality?city=kansas city&postal_code=64106&country=US&key=e5f946832cc34874b9250ae7016416e0";
-
-    // $.ajax({
-    //     type: "GET",
-    //     url: queryURL,
-    //     dataType: "json",
-    //     success: function (response) {
-    //         console.log(response);
-
-    //     }
-    // });
 
 
 
