@@ -20,15 +20,34 @@ $(document).ready(function () {
 
     $("#search-form").on("submit", function (event) {
         event.preventDefault();
+
         var searchInput = $("#city-text").val().trim();
+
         console.log(searchInput);
+
+        if (searchInput === "") {
+            return;
+        }
+
         if (arr.indexOf(searchInput) === -1) {
             createCitylist(searchInput);
             arr.push(searchInput);
             localStorage.setItem("city", JSON.stringify(arr));
             // getCurrentConditions();
         }
+
+        clearForm();
     })
+
+    // Reset placeholder text in form
+    function clearForm() {
+        $("#city-text").each(function () {
+            $(this).val("");
+            x = 1;
+        });
+        $("#city-text").first().focus();
+
+    }
 
     function createCitylist(name) {
         var id = 'btn' + name
