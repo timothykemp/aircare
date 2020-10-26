@@ -13,22 +13,22 @@ $(document).ready(function () {
 
     if (arr.length > 0) { 
         airqualityMetrics(arr[arr.length - 1]);
-        arr.forEach(name => { 
+        arr.forEach(name => {
             createCitylist(name);
-        })
+        });
     }
     
     $("#search-form").on("submit", function (event) {
         event.preventDefault();
         var searchInput = $("#city-text").val().trim();
         console.log(searchInput);
-        if (arr.indexOf(searchInput) === -1) { 
+        if (arr.indexOf(searchInput) === -1) {
             createCitylist(searchInput);
             arr.push(searchInput);
             localStorage.setItem("city", JSON.stringify(arr));
             airqualityMetrics(searchInput);
-            }
-    })
+        }
+    });
 
     function createCitylist(name) { 
         var id = 'btn' + name
@@ -75,16 +75,14 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
 
-                var CO = $(".airInfo1").text("Carbon Monoxide (CO) : " + response.data[0].co);
-                var no2 = $(".airInfo2").text("Nitrogen Dioxide (NO2) : " + response.data[0].no2);
-                var o3 = $(".airInfo3").text("Ozone (O3) : " + response.data[0].o3);
-                var pollentype = $(".airInfo4").text("Pollen Type: " + response.data[0].predominant_pollen_type);
-                var moldLevel = $(".airInfo5").text(response.data[0].predominant_pollen_type+" Level: " + response.data[0].mold_level);
-                var pollenGrass = $(".airInfo6").text("Pollen Level Grass: " + response.data[0].pollen_level_grass);
-                var pollentree = $(".airInfo7").text("Pollen Level Tree: " + response.data[0].pollen_level_tree);
-                var pollenweed = $(".airInfo7").text("Pollen Level Weed: " + response.data[0].pollen_level_weed);
-
-                $("#air-metric").append(CO, no2, o3, pollentype, pollenGrass, pollentree, pollenweed, moldLevel);
+                $(".airInfo1").text("Carbon Monoxide (CO) : " + response.data[0].co);
+                $(".airInfo2").text("Nitrogen Dioxide (NO2) : " + response.data[0].no2);
+                $(".airInfo3").text("Ozone (O3) : " + response.data[0].o3);
+               $(".airInfo4").text("Pollen Type: " + response.data[0].predominant_pollen_type);
+                $(".airInfo5").text(response.data[0].predominant_pollen_type+" Level: " + response.data[0].mold_level);
+                $(".airInfo6").text("Pollen Level Grass: " + response.data[0].pollen_level_grass);
+                $(".airInfo7").text("Pollen Level Tree: " + response.data[0].pollen_level_tree);
+                $(".airInfo8").text("Pollen Level Weed: " + response.data[0].pollen_level_weed);
             }
         });
 
