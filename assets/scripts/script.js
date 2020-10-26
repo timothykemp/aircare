@@ -4,7 +4,7 @@ $(document).ready(function () {
         event.preventDefault();
         var searchInput = $("#city-text").val().trim();
 
-        console.log(searchInput);
+        console.log(searchInput);  
 
         getCurrentConditions();
 
