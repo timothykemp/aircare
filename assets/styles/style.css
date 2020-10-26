@@ -19,6 +19,10 @@ body {
     margin-top: 1rem;
 }
 
+input:focus::placeholder {
+  color: transparent;
+}
+
 .map-responsive{
     overflow:hidden;
     padding-bottom:70%;
