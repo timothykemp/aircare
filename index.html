@@ -52,6 +52,13 @@
                 </div>
             </div>
 
+
+
+
+
+
+
+
             <div class="tile is-ancestor">
 
                 <div class="tile is-parent is-vertical is-3">
@@ -62,18 +69,20 @@
                             <label class="label">Search for a City:</label>
                         </div>
 
-                        <div class="field has-addons">
-                            <div class="control is-expanded">
-                                <input class="input is-small" type="text" placeholder="City Name" id="city-text">
+                        <form id="search-form">
+                            <div class="field has-addons">
+                                <div class="control is-expanded">
+                                    <input class="input is-small" type="text" placeholder="City Name" id="city-text">
+                                </div>
+                                <div class="control">
+                                    <button class="button is-info is-small" id="search-city">
+                                        <span class="icon is-small is-right">
+                                            <i class="fas fa-search-location"></i>
+                                        </span>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="control">
-                                <button class="button is-info is-small" id="search-city">
-                                    <span class="icon is-small is-right">
-                                        <i class="fas fa-search-location"></i>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
+                        </form>
 
                         <div class="tile is-vertical is-parent">
 
@@ -81,6 +90,8 @@
                                 <ul id="city-list">
                                 </ul>
                             </div>
+
+
                         </div>
 
                     </article>
