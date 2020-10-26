@@ -1,22 +1,15 @@
 $(document).ready(function () {
 
     var arr = JSON.parse(localStorage.getItem("city")) || [];
-    var queryURL = " https://api.covidtracking.com/v1/us/current.json";
-    $.ajax({
-        type: "GET",
-        url: queryURL,
-        dataType: "JSON",
-        success: function (response) {
-            console.log(response);
-        }
-    });
 
-    if (arr.length > 0) {
-        arr.forEach(name => {
+
+    if (arr.length > 0) { 
+        airqualityMetrics(arr[arr.length - 1]);
+        arr.forEach(name => { 
             createCitylist(name);
         })
     }
-
+    
 
     $("#search-form").on("submit", function (event) {
         event.preventDefault();
@@ -33,11 +26,16 @@ $(document).ready(function () {
             createCitylist(searchInput);
             arr.push(searchInput);
             localStorage.setItem("city", JSON.stringify(arr));
-            // getCurrentConditions();
+
+            airqualityMetrics(searchInput);
         }
+<<<<<<< HEAD
 
         clearForm();
     })
+=======
+    });
+>>>>>>> origin
 
     // Reset placeholder text in form
     function clearForm() {
@@ -66,19 +64,45 @@ $(document).ready(function () {
             }
         });
         li.addClass("city-list-item");
-        li.text(name).append(btn);
+        li.text(name)
+        li.append(btn);
         $("#city-list").append(li);
 
         li.on("click", function (event) {
-            event.preventDefault();
-            name = $(this).text();
-            console.log(name);
+            event.preventDefault();    
+            airqualityMetrics(name);
+
         });
     }
 
     function getCurrentConditions(response) {
         console.log(searchInput);
         getCurrentConditions();
+
+    }
+
+    function airqualityMetrics(cityName) {
+
+        // var queryURL = "https://api.airvisual.com/v2/city?city=" + cityName+"&state=new york&country=usa&key=bc4dec27-7130-4a22-88ca-f37ecbcfc5f9";
+        var queryURL = "https://api.weatherbit.io/v2.0/current/airquality?city=" + cityName +"&country=US&key=e5f946832cc34874b9250ae7016416e0";
+
+        $.ajax({
+            type: "GET",
+            url: queryURL,
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+
+                $(".airInfo1").text("Carbon Monoxide (CO) : " + response.data[0].co);
+                $(".airInfo2").text("Nitrogen Dioxide (NO2) : " + response.data[0].no2);
+                $(".airInfo3").text("Ozone (O3) : " + response.data[0].o3);
+               $(".airInfo4").text("Pollen Type: " + response.data[0].predominant_pollen_type);
+                $(".airInfo5").text(response.data[0].predominant_pollen_type+" Level: " + response.data[0].mold_level);
+                $(".airInfo6").text("Pollen Level Grass: " + response.data[0].pollen_level_grass);
+                $(".airInfo7").text("Pollen Level Tree: " + response.data[0].pollen_level_tree);
+                $(".airInfo8").text("Pollen Level Weed: " + response.data[0].pollen_level_weed);
+            }
+        });
 
     }
 
@@ -109,32 +133,9 @@ $(document).ready(function () {
 
         city.append(cityDate)
         card.append(city, positive, negitive, pending, death, recovered);
-        $("#currentCity").append(card)
+        $("#currentCity").append(card);
 
     }
-
-
-
-    // var queryURL = "https://api.airvisual.com/v2/states?country=usa&key=bc4dec27-7130-4a22-88ca-f37ecbcfc5f9";
-    // http://api.airvisual.com/v2/nearest_city?key=your_key
-
-    // var queryURL = "https://api.airvisual.com/v2/nearest_city?key=bc4dec27-7130-4a22-88ca-f37ecbcfc5f9";
-    // var queryURL = "https://api.weatherbit.io/v2.0/current/airquality?city=kansas city&postal_code=64106&country=US&key=e5f946832cc34874b9250ae7016416e0";
-
-    // $.ajax({
-    //     type: "GET",
-    //     url: queryURL,
-    //     dataType: "json",
-    //     success: function (response) {
-    //         console.log(response);
-
-    //     }
-    // });
-
-
-
-
-
 
 
 
@@ -198,12 +199,6 @@ $(document).ready(function () {
 
     //     }
     // });
-
-
-
-
-
-
 
 
 // });
