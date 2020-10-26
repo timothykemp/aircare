@@ -21,7 +21,6 @@ $(document).ready(function () {
     $("#search-form").on("submit", function (event) {
         event.preventDefault();
         var searchInput = $("#city-text").val().trim();
-
         console.log(searchInput);
         if (arr.indexOf(searchInput) === -1) { 
             createCitylist(searchInput);
@@ -59,12 +58,10 @@ $(document).ready(function () {
     }
 
     function getCurrentConditions(response) {
-
+        console.log(searchInput);  
         getCurrentConditions();
 
-    })
-
-
+    }
 
     var queryURL = " https://api.covidtracking.com/v1/us/current.json";
 
