@@ -39,7 +39,7 @@
             <div class="columns">
 
                 <!-- Search panel and saved cities section -->
-                <div class="column is-one-quarter">
+                <div class="column is-one-fifth">
                     <div class="has-background-white box">
 
                         <!-- City search form -->
@@ -69,13 +69,13 @@
                     </div>
                 </div>
 
-                <!-- Metrics and map section -->
-                <div class="column">
-                    <div class="has-background-white box">
+                <div class="column is-four-fifths">
 
+                    <!-- Metrics and map section -->
+                    <div class="has-background-white box">
                         <div class="columns">
 
-                            <div class="column is-one-third" id="covid-metric">
+                            <div class="column is-one-quarter" id="covid-metric">
                                 <div class="box">
                                     <p class="title is-size-5">
                                         COVID-19 Metrics
@@ -84,7 +84,7 @@
                                 </div>
                             </div>
 
-                            <div class="column is-one-third" id="air-metric">
+                            <div class="column is-one-quarter" id="air-metric">
                                 <div class="box">
                                     <p class="title is-size-5">
                                         Air Quality Metrics
@@ -93,63 +93,50 @@
                                 </div>
                             </div>
 
-                            <div class="column is-one-third" id="google-map">
+                            <div class="column is-one-half" id="google-map">
                                 <div class="box">
                                     <p class="title is-size-5">
                                         Map
                                     </p>
                                     <!-- added map here raihan-->
-                                    <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d25895663.485556163!2d-95.665!3d37.599999999999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1603474149931!5m2!1sen!2sus"
-                                        width="100%" height="300px" frameborder="0" style="border:0;" allowfullscreen=""
-                                        aria-hidden="false" tabindex="0"></iframe>
+                                    <div class="map-responsive">
+                                        <iframe
+                                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d25895663.485556163!2d-95.665!3d37.599999999999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1603474149931!5m2!1sen!2sus"
+                                            width="300" height="300" frameborder="0" style="border:0;"
+                                            allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                                    </div>
                                 </div>
                             </div>
 
                         </div>
-
                     </div>
-                </div>
 
+                    <!-- Sources, links, and sharing section -->
+                    <div class="has-background-white box">
+                        <div class="columns">
 
+                            <div class="column is-four-fifths" id="links-sources">
+                                <div class="box">
+                                    <p class="title is-size-5">
+                                        Links
+                                    </p>
+                                    <img src="https://via.placeholder.com/100">
+                                </div>
+                            </div>
 
-            </div>
+                            <div class="column is-one-fifth" id="sharing">
+                                <div class="box">
+                                    <p class="title is-size-5">
+                                        Sharing
+                                    </p>
+                                    <img src="https://via.placeholder.com/100">
+                                </div>
+                            </div>
 
-
-
-            <div class="tile is-ancestor">
-
-                <div class="tile is-parent is-vertical is-9">
-
-                    <article class="tile is-child box">
-                        <div class="tile is-parent">
-
-                            <article class="tile is-child is-8 box">
-                                <p class="title is-size-3">Map</p>
-                                <!-- <img src="https://via.placeholder.com/300"> -->
-                                <!-- added map here raihan-->
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d25895663.485556163!2d-95.665!3d37.599999999999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1603474149931!5m2!1sen!2sus"
-                                    width="400" height="300" frameborder="0" style="border:0;" allowfullscreen=""
-                                    aria-hidden="false" tabindex="0"></iframe>
-                            </article>
                         </div>
-                    </article>
-
-                    <article class="tile is-child box">
-                        <div class="tile is-parent">
-                            <article class="tile is-child is-9 box">
-                                <p class="title is-size-4">Links</p>
-                            </article>
-                            <article class="tile is-child is-3 box">
-                                <p class="title is-size-4">Sharing</p>
-                                <img src="https://via.placeholder.com/100">
-                            </article>
-                        </div>
-                    </article>
+                    </div>
 
                 </div>
-
             </div>
 
         </div>
