@@ -3,13 +3,13 @@ $(document).ready(function () {
     var arr = JSON.parse(localStorage.getItem("city")) || [];
 
 
-    if (arr.length > 0) { 
+    if (arr.length > 0) {
         airqualityMetrics(arr[arr.length - 1]);
-        arr.forEach(name => { 
+        arr.forEach(name => {
             createCitylist(name);
         })
     }
-    
+
 
     $("#search-form").on("submit", function (event) {
         event.preventDefault();
@@ -29,13 +29,9 @@ $(document).ready(function () {
 
             airqualityMetrics(searchInput);
         }
-<<<<<<< HEAD
 
         clearForm();
     })
-=======
-    });
->>>>>>> origin
 
     // Reset placeholder text in form
     function clearForm() {
@@ -69,7 +65,7 @@ $(document).ready(function () {
         $("#city-list").append(li);
 
         li.on("click", function (event) {
-            event.preventDefault();    
+            event.preventDefault();
             airqualityMetrics(name);
 
         });
@@ -84,7 +80,7 @@ $(document).ready(function () {
     function airqualityMetrics(cityName) {
 
         // var queryURL = "https://api.airvisual.com/v2/city?city=" + cityName+"&state=new york&country=usa&key=bc4dec27-7130-4a22-88ca-f37ecbcfc5f9";
-        var queryURL = "https://api.weatherbit.io/v2.0/current/airquality?city=" + cityName +"&country=US&key=e5f946832cc34874b9250ae7016416e0";
+        var queryURL = "https://api.weatherbit.io/v2.0/current/airquality?city=" + cityName + "&country=US&key=e5f946832cc34874b9250ae7016416e0";
 
         $.ajax({
             type: "GET",
@@ -96,8 +92,8 @@ $(document).ready(function () {
                 $(".airInfo1").text("Carbon Monoxide (CO) : " + response.data[0].co);
                 $(".airInfo2").text("Nitrogen Dioxide (NO2) : " + response.data[0].no2);
                 $(".airInfo3").text("Ozone (O3) : " + response.data[0].o3);
-               $(".airInfo4").text("Pollen Type: " + response.data[0].predominant_pollen_type);
-                $(".airInfo5").text(response.data[0].predominant_pollen_type+" Level: " + response.data[0].mold_level);
+                $(".airInfo4").text("Pollen Type: " + response.data[0].predominant_pollen_type);
+                $(".airInfo5").text(response.data[0].predominant_pollen_type + " Level: " + response.data[0].mold_level);
                 $(".airInfo6").text("Pollen Level Grass: " + response.data[0].pollen_level_grass);
                 $(".airInfo7").text("Pollen Level Tree: " + response.data[0].pollen_level_tree);
                 $(".airInfo8").text("Pollen Level Weed: " + response.data[0].pollen_level_weed);
