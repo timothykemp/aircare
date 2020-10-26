@@ -18,7 +18,6 @@ $(document).ready(function () {
         })
     }
     
-
     $("#search-form").on("submit", function (event) {
         event.preventDefault();
         var searchInput = $("#city-text").val().trim();
@@ -27,7 +26,7 @@ $(document).ready(function () {
             createCitylist(searchInput);
             arr.push(searchInput);
             localStorage.setItem("city", JSON.stringify(arr));
-            // getCurrentConditions();
+            airqualityMetrics(searchInput);
             }
     })
 
@@ -53,9 +52,7 @@ $(document).ready(function () {
         $("#city-list").append(li);
 
         li.on("click", function (event) {
-            event.preventDefault();
-            // name = $(this).text();
-            // console.log(name);     
+            event.preventDefault();    
             airqualityMetrics(name);
         });
     }
@@ -65,7 +62,6 @@ $(document).ready(function () {
         getCurrentConditions();
 
     }
-
 
     function airqualityMetrics(cityName) {
 
@@ -89,8 +85,6 @@ $(document).ready(function () {
                 var pollenweed = $(".airInfo7").text("Pollen Level Weed: " + response.data[0].pollen_level_weed);
 
                 $("#air-metric").append(CO, no2, o3, pollentype, pollenGrass, pollentree, pollenweed, moldLevel);
-
-
             }
         });
 
@@ -144,11 +138,6 @@ $(document).ready(function () {
 
     //     }
     // });
-
-
-
-
-
 
 
 
@@ -212,12 +201,6 @@ $(document).ready(function () {
 
     //     }
     // });
-
-
-
-
-
-
 
 
 // });
