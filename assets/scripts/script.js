@@ -2,7 +2,6 @@ $(document).ready(function () {
 
     var arr = JSON.parse(localStorage.getItem("city")) || [];
 
-
     if (arr.length > 0) { 
         airqualityMetrics(arr[arr.length - 1]);
         arr.forEach(name => { 
@@ -29,13 +28,9 @@ $(document).ready(function () {
 
             airqualityMetrics(searchInput);
         }
-<<<<<<< HEAD
 
         clearForm();
     })
-=======
-    });
->>>>>>> origin
 
     // Reset placeholder text in form
     function clearForm() {

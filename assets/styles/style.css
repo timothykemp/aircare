@@ -33,3 +33,44 @@ input:focus::placeholder {
     width:100%;
     position:absolute;
 }
+#github:hover {
+    opacity: 0.3;
+}
+#linkedin:hover{
+  opacity: 0.3;
+}
+#instagram:hover{
+  opacity: 0.3;
+}
+#facebook:hover{
+  opacity: 0.3;
+}
+#twitter:hover{
+  opacity: 0.3;
+}
+#facebook,#twitter,#instagram,#linkedin,#github{
+  width: 40px;
+  height:40px;
+  border-radius: 20%; 
+}
+ #instagram{
+  background-color: #609;
+  color: aliceblue;
+}
+#facebook{
+  background-color: #0073b1;
+  color: aliceblue;
+}
+#linkedin{
+background-color: #0073b1;
+color: aliceblue;
+
+}
+#github{
+  background-color: black;
+  color: aliceblue;
+}
+#twitter{
+  background-color: #22b8cf;
+  color: white;
+}
