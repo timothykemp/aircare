@@ -10,7 +10,6 @@ $(document).ready(function () {
         })
     }
 
-
     $("#search-form").on("submit", function (event) {
         event.preventDefault();
 
@@ -74,6 +73,7 @@ $(document).ready(function () {
         });
     }
 
+
     function airqualityMetrics(cityName) {
 
         // var queryURL = "https://api.airvisual.com/v2/city?city=" + cityName+"&state=new york&country=usa&key=bc4dec27-7130-4a22-88ca-f37ecbcfc5f9";
@@ -98,8 +98,61 @@ $(document).ready(function () {
         });
 
     }
+ 
+    $(document).ready(function () {
+  
+  
+      if (arr.length > 0) { 
+          covid19Metrics(arr[arr.length - 1]);
+          arr.forEach(name => { 
+              createStatelist(name);
+          })
+      }
+      
+      $("#search-form").on("submit", function (event) {
+          event.preventDefault();
+          var searchInput = $("#state-text").val().trim();
+          console.log(searchInput);
+          if (arr.indexOf(searchInput) === -1) {
+              createStatelist(searchInput);
+              arr.push(searchInput);
+              localStorage.setItem("state", JSON.stringify(arr));
+  
+              covid19Metrics(searchInput);
+          
+          }
+      });
+    
+    function createStatelist(name) {
+      var id = 'btn' + name
+      var li = $("<li >");
+      var btn = $('<button />', {
+          text: 'remove',
+          id: id,
+          click: function () {
+              $(this).parent().hide();
+              var localData = JSON.parse(localStorage.getItem("state"));
+              if (localData) {
+                  var data = localData.filter(city => city !== name);
+                  localStorage.removeItem('state');
+                  localStorage.setItem('state', JSON.stringify(data));
+              }
+          }
+      });
+      li.addClass("state-list-item");
+      li.text(name)
+      li.append(btn);
+      $("#state-list").append(li);
 
-    var queryURL = " https://api.covidtracking.com/v1/us/current.json";
+      li.on("state", function (event) {
+          event.preventDefault();    
+          covid19Metrics(name);
+
+      });
+    
+    function covid19Metrics(stateName) {
+      
+    var queryURL = " https://api.covidtracking.com/v1/states/ca/current.json" + stateName;
 
     $.ajax({
         type: "GET",
@@ -108,25 +161,15 @@ $(document).ready(function () {
         success: function (response) {
             console.log(response);
         }
-    });
+    })
 
-    function getCurrentConditions(response) {
+      $("<covidInfo1>").text("positve: " + response.data[0].positive);
+      $("<covidInfo2>").text("negitive: " + response.data[0].negitive);
+      $("<covidInfo3>").text("hospitalized: " + response[0].hospitalized);
+      $("<covidInfo4>").text("death: " + response[0].death);
+      $("<covidInfo5>").text("recovered: " + response[0].recovered);
 
-        $('#currentCity').empty();
-
-        const card = $("<div>").addClass("card");
-        const city = $("<h4>").addClass("card-title").text(response.name);
-        const cityDate = $("<h4>").addClass("card-title").text(date.toLocaleDateString('en-US'));
-        const positive = $("<p>").addClass("card-text current-positive").text("positive: ");
-        const negitive = $("<p>").addClass("card-text current-negitive").text("negitive: ");
-        const pending = $("<p>").addClass("card-text current-pending").text("pending: ");
-        const death = $("<p>").addClass("card-text current-death").text("death: ");
-        const recovered = $("<p>").addClass("card-text current-recovered").text("recovered: ");
-
-
-        city.append(cityDate)
-        card.append(city, positive, negitive, pending, death, recovered);
-        $("#currentCity").append(card);
+  }
 
     }
 
@@ -195,7 +238,6 @@ $(document).ready(function () {
 //     }
 
 
-
     // var queryURL = "https://api.airvisual.com/v2/states?country=usa&key=bc4dec27-7130-4a22-88ca-f37ecbcfc5f9";
     // http://api.airvisual.com/v2/nearest_city?key=your_key
 
@@ -216,3 +258,8 @@ $(document).ready(function () {
 // });
 
 
+
+    
+    
+
+});
