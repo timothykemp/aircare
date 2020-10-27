@@ -58,9 +58,6 @@ input:focus::placeholder {
   background-color: #0089c4;
 }
 
-
-
-
 .logo {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -75,4 +72,8 @@ input:focus::placeholder {
     height:100%;
     width:100%;
     position:absolute;
+}
+
+.title:not(:last-child) {
+    margin-bottom: .75rem;
 }
