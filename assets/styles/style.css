@@ -10,17 +10,60 @@ body {
     background-size: cover;
 }
 
-.logo {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+input:focus::placeholder {
+  color: transparent;
 }
 
 .city-list {
     margin-top: 1rem;
+    padding: 0;
+    border: 1px solid rgba(0,0,0,.125);
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+    border-bottom-right-radius: .25rem;
+    line-height: normal;
 }
 
-input:focus::placeholder {
-  color: transparent;
+.city-list.box {
+    padding: 0;
+}
+
+.city-list-item {
+    border: 1px solid rgba(0,0,0,.125);
+    border-width: 0 0 1px;
+    padding: .75rem 1.25rem;
+    font-weight: 300;
+    background-color: #f6f6f6;
+    display: block;
+    position: relative;
+}
+
+.city-list-item:hover {
+  background-color: #eee;
+}
+
+.city-list-item:first-child {
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+}
+
+.city-list-item:last-child {
+    border-bottom-right-radius: calc(.25rem - 1px);
+    border-bottom-left-radius: calc(.25rem - 1px);
+    border-bottom: 0rem;
+}
+
+.delete {
+  background-color: #0089c4;
+}
+
+
+
+
+.logo {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .map-responsive{
