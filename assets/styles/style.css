@@ -15,7 +15,7 @@ input:focus::placeholder {
 }
 
 .add-margin {
-  margin-bottom: .75rem;
+  margin-bottom: 1rem;
 }
 
 .city-list {
