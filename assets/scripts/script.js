@@ -43,11 +43,11 @@ $(document).ready(function () {
 
     }
 
+    // Creates new list item for each search city with button to remove
     function createCitylist(name) {
         var id = 'btn' + name
-        var li = $("<li >");
-        var btn = $('<button />', {
-            text: 'remove',
+        var li = $("<li>");
+        var btn = $('<button>', {
             id: id,
             click: function () {
                 $(this).parent().hide();
@@ -59,9 +59,12 @@ $(document).ready(function () {
                 }
             }
         });
+
+        btn.addClass("delete is-small is-pulled-right");
         li.addClass("city-list-item");
-        li.text(name)
+        li.text(name + " ");
         li.append(btn);
+
         $("#city-list").append(li);
 
         li.on("click", function (event) {
@@ -69,12 +72,6 @@ $(document).ready(function () {
             airqualityMetrics(name);
 
         });
-    }
-
-    function getCurrentConditions(response) {
-        console.log(searchInput);
-        getCurrentConditions();
-
     }
 
     function airqualityMetrics(cityName) {
@@ -133,9 +130,28 @@ $(document).ready(function () {
 
     }
 
+    // City search using Google Maps API
+    function initialize() {
 
+        var options = {
+            types: ['(cities)'],
+            componentRestrictions: { country: "us" }
+        };
+
+        var input = document.getElementById('city-text');
+        var autocomplete = new google.maps.places.Autocomplete(input, options);
+
+        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+            var place = autocomplete.getPlace();
+
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
 
 });
+
+
 
 
 
