@@ -9,13 +9,17 @@ $(document).ready(function () {
             createCitylist(name);
         })
     }
-
+    var state = "";
     $("#search-form").on("submit", function (event) {
         event.preventDefault();
 
         var searchInput = $("#city-text").val().trim();
 
         console.log(searchInput);
+        var fullsearch = $("#city-text").val().trim();
+        state = fullsearch.split(",");
+        state = state[1].trim();
+        console.log(state[1].trim());
 
         if (searchInput === "") {
             return;
@@ -27,6 +31,7 @@ $(document).ready(function () {
             localStorage.setItem("city", JSON.stringify(arr));
 
             airqualityMetrics(searchInput);
+            covid19Metrics(state);
         }
 
         clearForm();
@@ -69,6 +74,7 @@ $(document).ready(function () {
         li.on("click", function (event) {
             event.preventDefault();
             airqualityMetrics(name);
+            covid19Metrics(state);
 
         });
     }
@@ -99,79 +105,26 @@ $(document).ready(function () {
 
     }
  
-    $(document).ready(function () {
-  
-  
-      if (arr.length > 0) { 
-          covid19Metrics(arr[arr.length - 1]);
-          arr.forEach(name => { 
-              createStatelist(name);
-          })
-      }
-      
-      $("#search-form").on("submit", function (event) {
-          event.preventDefault();
-          var searchInput = $("#state-text").val().trim();
-          console.log(searchInput);
-          if (arr.indexOf(searchInput) === -1) {
-              createStatelist(searchInput);
-              arr.push(searchInput);
-              localStorage.setItem("state", JSON.stringify(arr));
-  
-              covid19Metrics(searchInput);
-          
-          }
-      });
-    
-    function createStatelist(name) {
-      var id = 'btn' + name
-      var li = $("<li >");
-      var btn = $('<button />', {
-          text: 'remove',
-          id: id,
-          click: function () {
-              $(this).parent().hide();
-              var localData = JSON.parse(localStorage.getItem("state"));
-              if (localData) {
-                  var data = localData.filter(city => city !== name);
-                  localStorage.removeItem('state');
-                  localStorage.setItem('state', JSON.stringify(data));
-              }
-          }
-      });
-      li.addClass("state-list-item");
-      li.text(name)
-      li.append(btn);
-      $("#state-list").append(li);
-
-      li.on("state", function (event) {
-          event.preventDefault();    
-          covid19Metrics(name);
-
-      });
     
     function covid19Metrics(stateName) {
       
-    var queryURL = " https://api.covidtracking.com/v1/states/ca/current.json" + stateName;
+        // var queryURL = " https://api.covidtracking.com/v1/states/ca/current.json" + stateName;
+        var queryURL = "https://api.covidtracking.com/v1/states/" + stateName +"/current.json"
 
-    $.ajax({
-        type: "GET",
-        url: queryURL,
-        dataType: "JSON",
-        success: function (response) {
-            console.log(response);
-        }
-    })
-
-      $("<covidInfo1>").text("positve: " + response.data[0].positive);
-      $("<covidInfo2>").text("negitive: " + response.data[0].negitive);
-      $("<covidInfo3>").text("hospitalized: " + response[0].hospitalized);
-      $("<covidInfo4>").text("death: " + response[0].death);
-      $("<covidInfo5>").text("recovered: " + response[0].recovered);
-
-  }
-
-    }
+        $.ajax({
+            type: "GET",
+            url: queryURL,
+            dataType: "JSON",
+            success: function (response) {
+                console.log(response);
+                $(".covidInfo1").text("positve: " + response.positive);
+                $(".covidInfo2").text("negitive: " + response.negative);
+                $(".covidInfo3").text("hospitalized: " + response.hospitalized);
+                $(".covidInfo4").text("death: " + response.death);
+                $(".covidInfo5").text("recovered: " + response.recovered);
+            }
+        });
+    } 
 
     // City search using Google Maps API
     function initialize() {
@@ -262,4 +215,4 @@ $(document).ready(function () {
     
     
 
-});
+// });
