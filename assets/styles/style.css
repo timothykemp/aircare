@@ -62,6 +62,10 @@ input:focus::placeholder {
   background-color: #0089c4;
 }
 
+.metrics-header {
+  color: #0089c4;
+}
+
 .logo {
   padding-top: 2rem;
   padding-bottom: 2rem;
