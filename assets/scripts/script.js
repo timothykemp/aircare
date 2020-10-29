@@ -1,7 +1,9 @@
 $(document).ready(function () {
-    
- // City search using Google Maps API
-    function initialize() {
+
+    // City search using Google Maps API
+    initializeGoogleMaps();
+
+    function initializeGoogleMaps() {
 
         var options = {
             types: ['(cities)'],
@@ -17,127 +19,63 @@ $(document).ready(function () {
         });
     }
 
-    // Listens for page load and initializes Google Maps
-    google.maps.event.addDomListener(window, 'load', initialize);
+    // Get stored data from localStorage and parse JSON strings to objects
+    var storedCities = JSON.parse(localStorage.getItem("city")) || [];
+    var storedStates = JSON.parse(localStorage.getItem("state")) || [];
+    var state;
+    var city;
 
-    // Initialize array of cities 
-    var cities = [];
+    // If data is stored, display air quality metrics of most recent city
+    if (storedCities.length > 0) {
+        airQualityMetrics(storedCities[storedCities.length - 1], storedStates[storedStates.length - 1]);
 
-    init();
+        var cityData = JSON.parse(localStorage.getItem("city"));
+        var stateData = JSON.parse(localStorage.getItem("state"));
 
-    // Retrieve cities from local storage 
-    function init() {
-
-        // Get stored cities from localStorage and parse JSON string to object
-        var storedCities = JSON.parse(localStorage.getItem("cities"));
-
-        // If cities were retrieved from localStorage, update the cities array to it
-        if (storedCities !== null) {
-            cities = storedCities;
+        for (var i = 0; i < cityData.length; i++) {
+            renderCities(cityData[i], stateData[i]);
         }
-
-        // Render cities to the DOM
-        renderCities();
     }
 
-    // Prevents user from submitting null and pushes city name to cities array
-    $("#search-city").click(function (event) {
+    // If data is stored, display COVID-19 metrics of most recent state
+    if (storedStates.length > 0) {
+        covid19Metrics(storedStates[storedStates.length - 1]);
+    }
+
+    // Prevents user from searching null, pushes city and state to arrays
+    $("#search-btn").click(function (event) {
         event.preventDefault();
 
         // This line grabs the input from the search box
-        var city = $("#city-text").val().trim();
-
-        console.log('city :>> ', city);
+        var cityState = $("#city-text").val().trim();
 
         // If form is empty, return early
-        if (city === "") {
+        if (cityState === "") {
             return;
         }
 
-        if (cities.indexOf(city) === -1) {
-            // Adding the city from the search box to our array
-            cities.push(city);
+        // Split cityState into city and state array
+        var splitState = cityState.split(",");
 
-            // Calling storeCities and renderCities which handle the processing of our cities array
-            storeCities();
-            renderCities(city);
+        city = splitState[0].trim();
+        state = splitState[1].trim();
+
+        // Adding city from search box to array, get air and COVID-19 metrics
+        if (storedCities.indexOf(cityState) === -1) {
+
+            renderCities(city, state);
+
+            localStorage.setItem("city", JSON.stringify(storedCities));
+            localStorage.setItem("state", JSON.stringify(storedStates));
+
+            airQualityMetrics(city, state);
+            covid19Metrics(state);
         }
 
         // Calling function to reset search box to placeholder
         clearForm();
 
     });
-
-    // Function for displaying cities list
-    function renderCities() {
-
-        // Deleting the cities prior to adding new cities
-        // (this is necessary otherwise you will have repeat cities)
-        $("#city-list").empty();
-
-        // Looping through the array of cities
-        for (var i = 0; i < cities.length; i++) {
-
-            // Then dynamically generating <li> for each city in the array
-            var cityName = $("<li>");
-            // Adding a class of city-list-item to our list item
-            cityName.addClass("city-list-item");
-            // Providing the list item text
-            cityName.text(cities[i]);
-
-            // Creating button to add to list item
-            var removeBtn = $("<button>");
-            // Adding class of city-remove-button to button
-            removeBtn.addClass("city-remove-button delete is-small is-pulled-right");
-
-            // Appending button to list item
-            cityName.append(removeBtn);
-            // Adding the list item to the city list div
-            $("#city-list").prepend(cityName);
-        }
-
-        var currentCity = cities[cities.length - 1];
-
-        airQualityMetrics(currentCity);
-
-       /*  $(".city-remove-button").click(function (event) {
-            event.preventDefault;
-            cityClick = $(this).parent().text();
-
-            console.log('cityClick :>> ', cityClick);
-
-            citiesEl = window.localStorage.key("cities");
-
-            console.log('citiesEl :>> ', citiesEl);
-
-            //localStorage.removeItem(cityClick);
-            /* $(this).parent().hide();
-
-            var getCities = JSON.parse(localStorage.getItem("cities"));
-            if (getCities) {
-                var data = getCities.filter(cities => cities !== cityClick);
-
-                localStorage.setItem("cities", JSON.stringify(data));
-            } 
-        }); */
-
-        // Change metrics to city name on click
-        $(".city-list-item").click(function (event) {
-            event.preventDefault;
-            cityClick = $(this).text();
-            airQualityMetrics(cityClick);
-        });
-
-
-
-
-    }
-
-    // Store cities
-    function storeCities() {
-        // Stringify and set "cities" key in localStorage to cities array
-        localStorage.setItem("cities", JSON.stringify(cities));
-    }
 
     // Reset placeholder text in form
     function clearForm() {
@@ -146,13 +84,57 @@ $(document).ready(function () {
             x = 1;
         });
         $("#city-text").first().focus();
+    }
 
+    // Creates new list item for each search city with button to remove
+    function renderCities(cityName, stateName) {
+        var id = 'btn' + cityName
+        var li = $("<li>");
+        var btn = $('<button>', {
+            id: id,
+
+            // Logic to remove clicked city from site and local storage
+            click: function () {
+                $(this).parent().hide();
+                var cityData = JSON.parse(localStorage.getItem("city"));
+                var stateData = JSON.parse(localStorage.getItem("state"));
+
+                if (cityData && stateData) {
+                    var cData = cityData.filter(city => city !== cityName);
+                    var sData = stateData.filter(state => state !== stateName);
+                    var dataToRemove = ['city', 'state'];
+
+                    dataToRemove.forEach(d =>
+                        localStorage.removeItem(d));
+
+                    localStorage.setItem('city', JSON.stringify(cData));
+                    localStorage.setItem('state', JSON.stringify(sData));
+                }
+
+            }
+        });
+
+        btn.addClass("delete is-small is-pulled-right");
+        li.addClass("city-list-item");
+        li.text(cityName + ", " + stateName);
+        li.append(btn);
+
+        $("#city-list").append(li);
+
+        // If city is clicked, change displayed metrics to that city
+        li.on("click", function (event) {
+            event.preventDefault();
+
+            airQualityMetrics(cityName, stateName);
+            covid19Metrics(stateName);
+
+        });
     }
 
     // Get air quality metrics, clear existing, and build new data points
-    function airQualityMetrics(searchCity) {
-       
-        var queryURL = "https://api.weatherbit.io/v2.0/current/airquality?city=" + searchCity + "&country=US&key=e5f946832cc34874b9250ae7016416e0";
+    function airQualityMetrics(cityName, stateName) {
+
+        var queryURL = "https://api.weatherbit.io/v2.0/current/airquality?city=" + cityName + "&country=US&key=e5f946832cc34874b9250ae7016416e0";
 
         $.ajax({
             type: "GET",
@@ -161,6 +143,7 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
 
+                $("#airHeader").empty();
                 $("#airInfo1").empty();
                 $("#airInfo2").empty();
                 $("#airInfo3").empty();
@@ -169,6 +152,7 @@ $(document).ready(function () {
                 $("#airInfo6").empty();
                 $("#airInfo7").empty();
 
+                var airHeader = "Air Quality Metrics - " + cityName + ", " + stateName;
                 var airInfo1 = response.data[0].co + " µg/m³";
                 var airInfo2 = response.data[0].no2 + " µg/m³";
                 var airInfo3 = response.data[0].o3 + " µg/m³";
@@ -177,6 +161,7 @@ $(document).ready(function () {
                 var airInfo6 = response.data[0].pollen_level_tree;
                 var airInfo7 = response.data[0].pollen_level_weed;
 
+                $("#airHeader").append(airHeader);
                 $("#airInfo1").append(airInfo1);
                 $("#airInfo2").append(airInfo2);
                 $("#airInfo3").append(airInfo3);
@@ -188,33 +173,29 @@ $(document).ready(function () {
         });
 
     }
-    
-    });
 
+    // Get COVID-19 metrics, clear existing, and build new data points
+    function covid19Metrics(stateName) {
 
+        var queryURL = "https://api.covidtracking.com/v1/states/" + stateName + "/current.json"
 
+        $.ajax({
+            type: "GET",
+            url: queryURL,
+            dataType: "JSON",
+            success: function (response) {
+                console.log(response);
 
+                $("#covidHeader").text("COVID-19 Metrics of " + stateName);
+                $(".covidInfo1").text("Positve: " + response.positive);
+                $(".covidInfo2").text("Negative: " + response.negative);
+                $(".covidInfo3").text("Hospitalized: " + response.hospitalized);
+                $(".covidInfo4").text("Death: " + response.death);
+                $(".covidInfo5").text("Recovered: " + response.recovered);
+                $(".covidInfo6").text("Total COVID Case: " + response.total);
 
+            }
+        });
+    }
 
-
-    /*     // Creates new list item for each search city with button to remove
-        function createCityList(name) {
-            var id = 'btn' + name
-            var li = $("<li>");
-            var btn = $('<button>', {
-                id: id,
-                click: function () {
-                    $(this).parent().hide();
-                    var localData = JSON.parse(localStorage.getItem("city"));
-                    if (localData) {
-                        var data = localData.filter(city => city !== name);
-                        localStorage.removeItem('city');
-                        localStorage.setItem('city', JSON.stringify(data));
-                    }
-                }
-            });
-    
-            });
-        }
-     */
-
+});

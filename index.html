@@ -10,8 +10,6 @@
     <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
 
-
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/styles/style.css">
 
@@ -54,7 +52,7 @@
                                         autocomplete="on" runat="server" />
                                 </div>
                                 <div class="control">
-                                    <button class="button is-info is-small" id="search-city">
+                                    <button class="button is-info is-small" id="search-btn">
                                         <span class="icon is-small is-right">
                                             <i class="fas fa-search-location"></i>
                                         </span>
@@ -79,8 +77,7 @@
                             <!-- COVID-19 metrics -->
                             <div class="column is-one-half" id="covid-metric">
                                 <div class="box">
-                                    <p class="title is-size-5">
-                                        COVID-19 Metrics
+                                    <p class="title is-size-5" id="covidHeader">
                                     </p>
 
                                     <p class="covidInfo1"> </p>
@@ -88,7 +85,7 @@
                                     <p class="covidInfo3"></p>
                                     <p class="covidInfo4"></p>
                                     <p class="covidInfo5"></p>
-
+                                    <p class="covidInfo6"></p>
 
                                 </div>
                             </div>
@@ -96,8 +93,7 @@
                             <!-- Air quality metrics -->
                             <div class="column is-one-half" id="air-metric">
                                 <div class="box">
-                                    <p class="title is-size-5">
-                                        Air Quality Metrics
+                                    <p class="title is-size-5" id="airHeader">
                                     </p>
                                     <p id="airLabel1">Carbon Monoxide (CO):
                                         <span id="airInfo1">
@@ -115,16 +111,16 @@
                                         <span id="airInfo4">
                                         </span>
                                     </p>
-                                    <p id="airLabel4">Pollen Level Grass:
-                                        <span id="airInfo4">
+                                    <p id="airLabel5">Pollen Level Grass:
+                                        <span id="airInfo5">
                                         </span>
                                     </p>
-                                    <p id="airLabel4">Pollen Level Tree:
-                                        <span id="airInfo4">
+                                    <p id="airLabel6">Pollen Level Tree:
+                                        <span id="airInfo6">
                                         </span>
                                     </p>
-                                    <p id="airLabel4">Pollen Level Weed:
-                                        <span id="airInfo4">
+                                    <p id="airLabel7">Pollen Level Weed:
+                                        <span id="airInfo7">
                                         </span>
                                     </p>
                                 </div>
