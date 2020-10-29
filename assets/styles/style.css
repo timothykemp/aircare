@@ -1,0 +1,180 @@
+html, body {
+  height:100%;
+}
+
+body { 
+  background: url(../images/air_care_bg.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+p {
+  font-family: 'Raleway', sans-serif;
+}
+
+.add-margin {
+  margin-bottom: 1rem;
+}
+
+.city-list {
+  margin-top: 1rem;
+  padding: 0;
+  border: 1px solid rgba(0,0,0,.125);
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  border-bottom-left-radius: .25rem;
+  border-bottom-right-radius: .25rem;
+  line-height: normal;
+}
+
+.city-list.box {
+  padding: 0;
+}
+
+.city-list-item {
+  border: 1px solid rgba(0,0,0,.125);
+  border-width: 0 0 1px;
+  padding: .75rem 1.25rem;
+  font-weight: 300;
+  background-color: #f6f6f6;
+  display: block;
+  position: relative;
+}
+
+.city-list-item:hover {
+  background-color: #eee;
+}
+
+.city-list-item:first-child {
+  border-top-left-radius: calc(.25rem - 1px);
+  border-top-right-radius: calc(.25rem - 1px);
+}
+
+.city-list-item:last-child {
+  border-bottom-right-radius: calc(.25rem - 1px);
+  border-bottom-left-radius: calc(.25rem - 1px);
+  border-bottom: 0rem;
+}
+
+.delete {
+  background-color: #0089c4;
+}
+
+.fb-share-button{
+  margin-bottom: 5px;
+}
+
+.fb-share-button:hover{
+  opacity: 0.9;
+}
+
+.metrics-header {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  color: #0089c4;
+  text-decoration: underline;
+  text-decoration-color: #737373;
+}
+
+.logo {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.map-responsive{
+  overflow:hidden;
+  padding-bottom:70%;
+  position:relative;
+}
+.map-responsive iframe{
+  height:100%;
+  width:100%;
+  position:absolute;
+}
+
+.metric-label {
+  font-weight: 600;
+}
+
+.metric-label-span {
+  font-weight: 400;
+  color: #0089c4;
+}
+
+.search-result {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 400;
+  color: #0089c4;
+}
+
+.text-link {
+  color: #0089c4;
+}
+
+.title,
+.label {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
+}
+
+.title:not(:last-child) {
+  margin-bottom: .75rem;
+}
+
+/* #github:hover {
+  opacity: 0.3;
+}
+
+#linkedin:hover{
+  opacity: 0.3;
+}
+
+#instagram:hover{
+  opacity: 0.3;
+}
+
+#facebook:hover{
+  opacity: 0.3;
+}
+
+#twitter:hover{
+  opacity: 0.3;
+}
+
+#facebook,#twitter,#instagram,#linkedin,#github{
+  width: 40px;
+  height:40px;
+  border-radius: 20%; 
+}
+
+#instagram{
+  background-color: #609;
+  color: aliceblue;
+}
+
+#facebook{
+  background-color: #0073b1;
+  color: aliceblue;
+}
+
+#linkedin{
+background-color: #0073b1;
+color: aliceblue;
+
+}
+
+#github{
+  background-color: black;
+  color: aliceblue;
+}
+
+#twitter{
+  background-color: #22b8cf;
+  color: white;
+} */

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&family=Raleway:wght@400;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Bulma CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/styles/style.css">
+
+    <title>Air Care: Because You Care About the Air</title>
+
+</head>
+
+<body>
+
+    <!-- Header with simple navbar -->
+    <header>
+        <nav class="level">
+            <p class="level-item has-text-centered">
+                <a class="level-item" href="./index.html">
+                    <img class="logo" src="./assets/images/air_care_logo.png"
+                        alt="Air Care: Because You Care About the Air" height="auto">
+                </a>
+            </p>
+        </nav>
+    </header>
+
+
+    <!-- Main section of page -->
+    <main>
+        <div class="container">
+            <div class="columns">
+
+                <!-- Search panel and saved cities section -->
+                <div class="column is-one-fifth">
+                    <div class="has-background-white box">
+
+                        <!-- City search form -->
+                        <form id="search-form">
+                            <div class="field-label is-size-6 has-text-left">
+                                <label class="label">Search for a City:</label>
+                            </div>
+                            <div class="field has-addons">
+                                <div class="control is-expanded">
+                                    <input class="input is-small" type="text" placeholder="City Name" id="city-text"
+                                        autocomplete="on" runat="server" />
+                                </div>
+                                <div class="control">
+                                    <button class="button is-info is-small" id="search-btn">
+                                        <span class="icon is-small is-right">
+                                            <i class="fas fa-search-location"></i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Saved cities list -->
+                        <div class="city-list box">
+                            <ul id="city-list"></ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="column is-four-fifths">
+                    <!-- Metrics and map section -->
+                    <div class="has-background-white box">
+                        <div class="columns">
+
+                            <!-- COVID-19 metrics -->
+                            <div class="column is-one-half" id="covid-metric">
+                                <div class="box">
+                                    <p class="title is-size-5">COVID-19 Metrics:
+                                        <span id="covidHeader" class="search-result">
+                                        </span>
+                                    </p>
+                                    <p id="covidLabel1" class="metric-label">Positive:
+                                        <span id="covidInfo1" class="metric-label-span">
+                                        </span>
+                                    </p>
+                                    <p id="covidLabel2" class="metric-label">Negative:
+                                        <span id="covidInfo2" class="metric-label-span">
+                                        </span>
+                                    </p>
+                                    <p id="covidLabel3" class="metric-label">Hospitalized:
+                                        <span id="covidInfo3" class="metric-label-span">
+                                        </span>
+                                    </p>
+                                    <p id="covidLabel4" class="metric-label">Deaths:
+                                        <span id="covidInfo4" class="metric-label-span">
+                                        </span>
+                                    </p>
+                                    <p id="covidLabel5" class="metric-label">Recovered:
+                                        <span id="covidInfo5" class="metric-label-span">
+                                        </span>
+                                    </p>
+                                    <p id="covidLabel6" class="metric-label">Total Cases:
+                                        <span id="covidInfo6" class="metric-label-span">
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Air quality metrics -->
+                            <div class="column is-one-half" id="air-metric">
+                                <div class="box">
+                                    <p class="title is-size-5">Air Quality Metrics:
+                                        <span id="airHeader" class="search-result">
+                                        </span>
+                                    </p>
+                                    <p id="airLabel1" class="metric-label">Carbon Monoxide (CO):
+                                        <span id="airInfo1" class="metric-label-span">
+                                        </span>
+                                    </p>
+                                    <p id="airLabel2" class="metric-label">Ozone (O<span>&#8323;</span>):
+                                        <span id="airInfo2" class="metric-label-span">
+                                        </span>
+                                    </p>
+                                    <p id="airLabel3" class="metric-label">Predominant Allergen:
+                                        <span id="airInfo3" class="newValue metric-label-span">
+                                        </span>
+                                    </p>
+                                    <p id="airLabel4" class="metric-label">Mold Level:
+                                        <span id="airInfo4" class="newValue metric-label-span">
+                                        </span>
+                                    </p>
+
+                                    <p id="airLabel5" class="metric-label">Pollen Level Grass:
+                                        <span id="airInfo5" class="newValue metric-label-span">
+                                        </span>
+                                    </p>
+                                    <p id="airLabel6" class="metric-label">Pollen Level Tree:
+                                        <span id="airInfo6" class="newValue metric-label-span">
+                                        </span>
+                                    </p>
+                                    <p id="airLabel7" class="metric-label">Pollen Level Weed:
+                                        <span id="airInfo7" class="newValue metric-label-span">
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Sources, links, and sharing section -->
+                    <div class="has-background-white box">
+                        <div class="columns">
+
+                            <!-- Links and sources -->
+                            <div class="column is-four-fifths" id="links-sources">
+                                <div class="box">
+                                    <p class="title is-size-5">
+                                        Data Sources
+                                    </p>
+                                    <p class="title is-size-6 metrics-header">
+                                        Air Quality Metrics
+                                    </p>
+                                    <p class="add-margin">
+                                        Air quality metrics data provided by <a href="https://www.weatherbit.io/"
+                                            target="_blank" class="text-link">Weatherbit.io</a>
+                                        under the terms of the <a
+                                            href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode"
+                                            target="_blank" class="text-link">Creative
+                                            Commons Attribution-NonCommercial-ShareAlike 4.0 Generic License</a>.
+                                    </p>
+                                    <p class="title is-size-6 metrics-header">
+                                        COVID-19 Metrics
+                                    </p>
+                                    <p>
+                                        COVID-19 metrics data provided by <a href="https://covidtracking.com/"
+                                            target="_blank" class="text-link">The COVID Tracking Project</a>
+                                        under the terms of the <a href="https://creativecommons.org/licenses/by/4.0/"
+                                            target="_blank" class="text-link">Creative Commons CC BY 4.0 License</a>.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Social sharing links -->
+                            <div class="column is-one-fifth" id="sharing">
+                                <div class="box has-text-centered">
+                                    <p class="title is-size-5">
+                                        Share Us!
+                                    </p>
+                                    <!-- <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"
+                                            id="facebook"></i></a> -->
+                                    <div class="fb-share-button" data-href="https://timothykemp.dev/aircare/"
+                                        data-layout="button_count" data-size="large"></div>
+                                    <!-- <a href="https://github.com/" target="_blank"><i class="fab fa-github"
+                                            id="github"></i></a> -->
+                                    <!-- <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"
+                                            id="linkedin"></i></a> -->
+                                    <!-- <a href="https://www.instagram.com/?hl=en" target="_blank"><i
+                                            class="fab fa-instagram" id="instagram"></i></a> -->
+                                    <!-- <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"
+                                            id="twitter"></i></a> -->
+                                    <!-- <a href="https://twitter.com/intent/like?tweet_id=463440424141459456">Like</a> -->
+                                    <div>
+                                        <a class="twitter-share-button"
+                                            href="https://twitter.com/intent/tweet?url=https://timothykemp.dev/aircare/"
+                                            data-size="large">
+                                            Tweet</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Google Maps API - Places -->
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUql1ENV26LP5jcGpdkFQKF453oMd3I-8&libraries=places"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+    <!-- Font Awesome js -->
+    <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
+        integrity="sha384-9/D4ECZvKMVEJ9Bhr3ZnUAF+Ahlagp1cyPC7h5yDlZdXs4DQ/vRftzfd+2uFUuqS"
+        crossorigin="anonymous"></script>
+
+    <!-- Social Sharing Plugins -->
+    <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0"></script>
+    <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
+
+    <!-- Custom JS -->
+    <script src="./assets/scripts/script.js"></script>
+
+</body>
+
+</html>
