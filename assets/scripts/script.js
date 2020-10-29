@@ -164,6 +164,28 @@ $(document).ready(function () {
                 var airInfo6 = response.data[0].pollen_level_tree;
                 var airInfo7 = response.data[0].pollen_level_weed;
 
+                if (airInfo1 === null) {
+                    airInfo1 = "Not Available"
+                }
+                if (airInfo2 === null) {
+                    airInfo2 = "Not Available"
+                }
+                if (airInfo3 === null) {
+                    airInfo3 = "Not Available"
+                }
+                if (airInfo4 === null) {
+                    airInfo4 = "Not Available"
+                }
+                if (airInfo5 === null) {
+                    airInfo5 = "Not Available"
+                }
+                if (airInfo6 === null) {
+                    airInfo6 = "Not Available"
+                }
+                if (airInfo7 === null) {
+                    airInfo7 = "Not Available"
+                }
+
                 $("#airHeader").append(airHeader);
                 $("#airInfo1").append(airInfo1);
                 $("#airInfo2").append(airInfo2);
@@ -174,6 +196,7 @@ $(document).ready(function () {
                 $("#airInfo7").append(airInfo7);
 
                 $(".newValue").each(function () {
+                    //               $(this).html($(this).html().replace("null", "Not Available"));
                     $(this).html($(this).html().replace(0, "None"));
                     $(this).html($(this).html().replace(1, "Low"));
                     $(this).html($(this).html().replace(2, "Moderate"));
@@ -208,12 +231,42 @@ $(document).ready(function () {
                 $("#covidInfo6").empty();
 
                 var covidHeader = " " + stateName;
-                var covidInfo1 = " " + nf.format(response.positive);
-                var covidInfo2 = " " + nf.format(response.negative);
-                var covidInfo3 = " " + nf.format(response.hospitalizedCurrently);
-                var covidInfo4 = " " + nf.format(response.death);
-                var covidInfo5 = " " + nf.format(response.recovered);
-                var covidInfo6 = " " + nf.format(response.total);
+
+                if (response.positive === null) {
+                    var covidInfo1 = " Not Available"
+                } else {
+                    var covidInfo1 = " " + nf.format(response.positive);
+                };
+
+                if (response.negative === null) {
+                    var covidInfo2 = " Not Available"
+                } else {
+                    var covidInfo2 = " " + nf.format(response.negative);
+                };
+
+                if (response.hospitalizedCurrently === null) {
+                    var covidInfo3 = " Not Available"
+                } else {
+                    var covidInfo3 = " " + nf.format(response.hospitalizedCurrently);
+                };
+
+                if (response.death === null) {
+                    var covidInfo4 = " Not Available"
+                } else {
+                    var covidInfo4 = " " + nf.format(response.death);
+                };
+
+                if (response.recovered === null) {
+                    var covidInfo5 = " Not Available"
+                } else {
+                    var covidInfo5 = " " + nf.format(response.recovered);
+                };
+
+                if (response.total === null) {
+                    var covidInfo6 = " Not Available"
+                } else {
+                    var covidInfo6 = " " + nf.format(response.total);
+                };
 
                 $("#covidHeader").append(covidHeader);
                 $("#covidInfo1").append(covidInfo1);
