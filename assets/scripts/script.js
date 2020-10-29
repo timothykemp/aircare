@@ -210,7 +210,7 @@ $(document).ready(function () {
                 var covidHeader = " " + stateName;
                 var covidInfo1 = " " + nf.format(response.positive);
                 var covidInfo2 = " " + nf.format(response.negative);
-                var covidInfo3 = " " + nf.format(response.hospitalized);
+                var covidInfo3 = " " + nf.format(response.hospitalizedCurrently);
                 var covidInfo4 = " " + nf.format(response.death);
                 var covidInfo5 = " " + nf.format(response.recovered);
                 var covidInfo6 = " " + nf.format(response.total);
