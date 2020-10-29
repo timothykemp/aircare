@@ -13,6 +13,11 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/styles/style.css">
 
+    <!-- facebook share -->
+    <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0"></script>
+    <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
+
+
     <title>Air Care: Because You Care About the Air</title>
 
 </head>
@@ -93,17 +98,18 @@
                             <!-- Air quality metrics -->
                             <div class="column is-one-half" id="air-metric">
                                 <div class="box">
-                                    <p class="title is-size-5" id="airHeader">
+                                    <p class="title is-size-5">Air Quality Metrics -<span id="airHeader">
+                                        </span>
                                     </p>
                                     <p id="airLabel1">Carbon Monoxide (CO):
                                         <span id="airInfo1">
                                         </span>
                                     </p>
-                                    <p id="airLabel2">Nitrogen Dioxide (NO2):
+                                    <p id="airLabel2">Nitrogen Dioxide (NO<span>&#8322;</span>):
                                         <span id="airInfo2">
                                         </span>
                                     </p>
-                                    <p id="airLabel3">Ozone (O3):
+                                    <p id="airLabel3">Ozone (O<span>&#8323;</span>):
                                         <span id="airInfo3">
                                         </span>
                                     </p>
@@ -168,16 +174,23 @@
                                     <p class="title is-size-5">
                                         Share Us!
                                     </p>
-                                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"
-                                            id="facebook"></i></a>
-                                    <a href="https://github.com/" target="_blank"><i class="fab fa-github"
-                                            id="github"></i></a>
-                                    <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"
-                                            id="linkedin"></i></a>
-                                    <a href="https://www.instagram.com/?hl=en" target="_blank"><i
-                                            class="fab fa-instagram" id="instagram"></i></a>
-                                    <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"
-                                            id="twitter"></i></a>
+                                    <!-- <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"
+                                            id="facebook"></i></a> -->
+                                    <div class="fb-share-button" data-href="https://timothykemp.dev/project_1_group_4/"
+                                        data-layout="button_count" data-size="large"></div>
+                                    <!-- <a href="https://github.com/" target="_blank"><i class="fab fa-github"
+                                            id="github"></i></a> -->
+                                    <!-- <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"
+                                            id="linkedin"></i></a> -->
+                                    <!-- <a href="https://www.instagram.com/?hl=en" target="_blank"><i
+                                            class="fab fa-instagram" id="instagram"></i></a> -->
+                                    <!-- <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"
+                                            id="twitter"></i></a> -->
+                                    <!-- <a href="https://twitter.com/intent/like?tweet_id=463440424141459456">Like</a> -->
+                                    <a class="twitter-share-button"
+                                        href="https://twitter.com/intent/tweet?text=Hello%20world" data-size="large">
+                                        Tweet</a>
+
                                 </div>
                             </div>
 
