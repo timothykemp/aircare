@@ -10,8 +10,6 @@
     <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
 
-
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/styles/style.css">
 
@@ -54,7 +52,7 @@
                                         autocomplete="on" runat="server" />
                                 </div>
                                 <div class="control">
-                                    <button class="button is-info is-small" id="search-city">
+                                    <button class="button is-info is-small" id="search-btn">
                                         <span class="icon is-small is-right">
                                             <i class="fas fa-search-location"></i>
                                         </span>
@@ -82,7 +80,7 @@
                                     <p class="title is-size-5" id="covidHeader">
                                     </p>
 
-                                    <p class="covidInfo1"></p>
+                                    <p class="covidInfo1"> </p>
                                     <p class="covidInfo2"></p>
                                     <p class="covidInfo3"></p>
                                     <p class="covidInfo4"></p>
@@ -97,14 +95,34 @@
                                 <div class="box">
                                     <p class="title is-size-5" id="airHeader">
                                     </p>
-                                    <p class="airInfo1"></p>
-                                    <p class="airInfo2"></p>
-                                    <p class="airInfo3"></p>
-                                    <p class="airInfo4"></p>
-                                    <p class="airInfo5"></p>
-                                    <p class="airInfo6"></p>
-                                    <p class="airInfo7"></p>
-                                    <p class="airInfo8"></p>
+                                    <p id="airLabel1">Carbon Monoxide (CO):
+                                        <span id="airInfo1">
+                                        </span>
+                                    </p>
+                                    <p id="airLabel2">Nitrogen Dioxide (NO2):
+                                        <span id="airInfo2">
+                                        </span>
+                                    </p>
+                                    <p id="airLabel3">Ozone (O3):
+                                        <span id="airInfo3">
+                                        </span>
+                                    </p>
+                                    <p id="airLabel4">Predominant Pollen Type:
+                                        <span id="airInfo4">
+                                        </span>
+                                    </p>
+                                    <p id="airLabel5">Pollen Level Grass:
+                                        <span id="airInfo5">
+                                        </span>
+                                    </p>
+                                    <p id="airLabel6">Pollen Level Tree:
+                                        <span id="airInfo6">
+                                        </span>
+                                    </p>
+                                    <p id="airLabel7">Pollen Level Weed:
+                                        <span id="airInfo7">
+                                        </span>
+                                    </p>
                                 </div>
                             </div>
 
