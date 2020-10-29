@@ -139,13 +139,17 @@ $(document).ready(function () {
             dataType: "JSON",
             success: function (response) {
                 console.log(response);
+                var nf = new Intl.NumberFormat();
+                console.log(nf.format(response.positive));
+
+
                 $("#covidHeader").text("COVID-19 Metrics of " + stateName);
-                $(".covidInfo1").text("Positve: " + response.positive);
-                $(".covidInfo2").text("Negative: " + response.negative);
-                $(".covidInfo3").text("Hospitalized: " + response.hospitalized);
-                $(".covidInfo4").text("Death: " + response.death);
-                $(".covidInfo5").text("Recovered: " + response.recovered);
-                $(".covidInfo6").text("Total COVID Case: " + response.total);
+                $(".covidInfo1").text("Positve: " + nf.format(response.positive));
+                $(".covidInfo2").text("Negative: " + nf.format(response.negative));
+                $(".covidInfo3").text("Hospitalized: " + nf.format(response.hospitalized));
+                $(".covidInfo4").text("Death: " + nf.format(response.death));
+                $(".covidInfo5").text("Recovered: " + nf.format(response.recovered));
+                $(".covidInfo6").text("Total COVID Case: " + nf.format(response.total));
                
             }
         });
