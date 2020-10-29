@@ -65,6 +65,9 @@ $(document).ready(function () {
 
             renderCities(city, state);
 
+            storedCities.push(city);
+            storedStates.push(state);
+
             localStorage.setItem("city", JSON.stringify(storedCities));
             localStorage.setItem("state", JSON.stringify(storedStates));
 
@@ -119,7 +122,7 @@ $(document).ready(function () {
         li.text(cityName + ", " + stateName);
         li.append(btn);
 
-        $("#city-list").append(li);
+        $("#city-list").prepend(li);
 
         // If city is clicked, change displayed metrics to that city
         li.on("click", function (event) {
@@ -155,8 +158,8 @@ $(document).ready(function () {
                 var airHeader = " " + cityName + ", " + stateName;
                 var airInfo1 = response.data[0].co + " µg/m³";
                 var airInfo2 = response.data[0].o3 + " µg/m³";
-                var airInfo3 = response.data[0].mold_level;
-                var airInfo4 = response.data[0].predominant_pollen_type;
+                var airInfo3 = response.data[0].predominant_pollen_type;
+                var airInfo4 = response.data[0].mold_level;
                 var airInfo5 = response.data[0].pollen_level_grass;
                 var airInfo6 = response.data[0].pollen_level_tree;
                 var airInfo7 = response.data[0].pollen_level_weed;
@@ -170,13 +173,13 @@ $(document).ready(function () {
                 $("#airInfo6").append(airInfo6);
                 $("#airInfo7").append(airInfo7);
 
-                /*                 $(".newValue").each(function () {
-                                    $(this).html($(this).html().replace(0, "None"));
-                                    $(this).html($(this).html().replace(1, "Low"));
-                                    $(this).html($(this).html().replace(2, "Moderate"));
-                                    $(this).html($(this).html().replace(3, "High"));
-                                    $(this).html($(this).html().replace(4, "Very High"));
-                                }); */
+                $(".newValue").each(function () {
+                    $(this).html($(this).html().replace(0, "None"));
+                    $(this).html($(this).html().replace(1, "Low"));
+                    $(this).html($(this).html().replace(2, "Moderate"));
+                    $(this).html($(this).html().replace(3, "High"));
+                    $(this).html($(this).html().replace(4, "Very High"));
+                });
             }
         });
 
