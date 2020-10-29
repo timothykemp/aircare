@@ -65,6 +65,9 @@ $(document).ready(function () {
 
             renderCities(city, state);
 
+            storedCities.push(city);
+            storedStates.push(state);
+
             localStorage.setItem("city", JSON.stringify(storedCities));
             localStorage.setItem("state", JSON.stringify(storedStates));
 
@@ -119,7 +122,7 @@ $(document).ready(function () {
         li.text(cityName + ", " + stateName);
         li.append(btn);
 
-        $("#city-list").append(li);
+        $("#city-list").prepend(li);
 
         // If city is clicked, change displayed metrics to that city
         li.on("click", function (event) {
@@ -154,9 +157,9 @@ $(document).ready(function () {
 
                 var airHeader = " " + cityName + ", " + stateName;
                 var airInfo1 = response.data[0].co + " µg/m³";
-                var airInfo2 = response.data[0].no2 + " µg/m³";
-                var airInfo3 = response.data[0].o3 + " µg/m³";
-                var airInfo4 = response.data[0].predominant_pollen_type;
+                var airInfo2 = response.data[0].o3 + " µg/m³";
+                var airInfo3 = response.data[0].predominant_pollen_type;
+                var airInfo4 = response.data[0].mold_level;
                 var airInfo5 = response.data[0].pollen_level_grass;
                 var airInfo6 = response.data[0].pollen_level_tree;
                 var airInfo7 = response.data[0].pollen_level_weed;
@@ -169,6 +172,14 @@ $(document).ready(function () {
                 $("#airInfo5").append(airInfo5);
                 $("#airInfo6").append(airInfo6);
                 $("#airInfo7").append(airInfo7);
+
+                $(".newValue").each(function () {
+                    $(this).html($(this).html().replace(0, "None"));
+                    $(this).html($(this).html().replace(1, "Low"));
+                    $(this).html($(this).html().replace(2, "Moderate"));
+                    $(this).html($(this).html().replace(3, "High"));
+                    $(this).html($(this).html().replace(4, "Very High"));
+                });
             }
         });
 
@@ -187,15 +198,30 @@ $(document).ready(function () {
                 console.log(response);
 
                 var nf = new Intl.NumberFormat();
-                console.log(nf.format(response.positive));
 
-                $("#covidHeader").text("COVID-19 Metrics of " + stateName);
-                $(".covidInfo1").text("Positive: " + nf.format(response.positive));
-                $(".covidInfo2").text("Negative: " + nf.format(response.negative));
-                $(".covidInfo3").text("Hospitalized: " + nf.format(response.hospitalized));
-                $(".covidInfo4").text("Death: " + nf.format(response.death));
-                $(".covidInfo5").text("Recovered: " + nf.format(response.recovered));
-                $(".covidInfo6").text("Total COVID Case: " + nf.format(response.total));
+                $("#covidHeader").empty();
+                $("#covidInfo1").empty();
+                $("#covidInfo2").empty();
+                $("#covidInfo3").empty();
+                $("#covidInfo4").empty();
+                $("#covidInfo5").empty();
+                $("#covidInfo6").empty();
+
+                var covidHeader = " " + stateName;
+                var covidInfo1 = " " + nf.format(response.positive);
+                var covidInfo2 = " " + nf.format(response.negative);
+                var covidInfo3 = " " + nf.format(response.hospitalizedCurrently);
+                var covidInfo4 = " " + nf.format(response.death);
+                var covidInfo5 = " " + nf.format(response.recovered);
+                var covidInfo6 = " " + nf.format(response.total);
+
+                $("#covidHeader").append(covidHeader);
+                $("#covidInfo1").append(covidInfo1);
+                $("#covidInfo2").append(covidInfo2);
+                $("#covidInfo3").append(covidInfo3);
+                $("#covidInfo4").append(covidInfo4);
+                $("#covidInfo5").append(covidInfo5);
+                $("#covidInfo6").append(covidInfo6);
 
             }
         });
