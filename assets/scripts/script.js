@@ -115,7 +115,7 @@ $(document).ready(function () {
                             storedCities.splice(x, 1);
                             storedStates.splice(x, 1);
                             localStorage.setItem('city', JSON.stringify(storedCities));
-                            localStorage.setItem('state', JSON.stringify(storedStates));  
+                            localStorage.setItem('state', JSON.stringify(storedStates)); 
                         }
                     }                   
                 }
