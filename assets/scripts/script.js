@@ -22,6 +22,7 @@ $(document).ready(function () {
     // Get stored data from localStorage and parse JSON strings to objects
     var storedCities = JSON.parse(localStorage.getItem("city")) || [];
     var storedStates = JSON.parse(localStorage.getItem("state")) || [];
+    
     var state;
     var city;
 
@@ -31,6 +32,7 @@ $(document).ready(function () {
 
         var cityData = JSON.parse(localStorage.getItem("city"));
         var stateData = JSON.parse(localStorage.getItem("state"));
+       
 
         for (var i = 0; i < cityData.length; i++) {
             renderCities(cityData[i], stateData[i]);
@@ -53,7 +55,7 @@ $(document).ready(function () {
         if (cityState === "") {
             return;
         }
-
+        
         // Split cityState into city and state array
         var splitState = cityState.split(",");
 
@@ -67,9 +69,10 @@ $(document).ready(function () {
 
             storedCities.push(city);
             storedStates.push(state);
-
+            
             localStorage.setItem("city", JSON.stringify(storedCities));
             localStorage.setItem("state", JSON.stringify(storedStates));
+           
 
             airQualityMetrics(city, state);
             covid19Metrics(state);
@@ -93,33 +96,35 @@ $(document).ready(function () {
     function renderCities(cityName, stateName) {
         var id = 'btn' + cityName
         var li = $("<li>");
+        li.addClass("city-list-item");
+        li.text(cityName + ", " + stateName);
+        var lineText = li.text();
+        
         var btn = $('<button>', {
             id: id,
-
             // Logic to remove clicked city from site and local storage
             click: function () {
                 $(this).parent().hide();
                 var cityData = JSON.parse(localStorage.getItem("city"));
                 var stateData = JSON.parse(localStorage.getItem("state"));
-
+                
                 if (cityData && stateData) {
-                    var cData = cityData.filter(city => city !== cityName);
-                    var sData = stateData.filter(state => state !== stateName);
-                    var dataToRemove = ['city', 'state'];
-
-                    dataToRemove.forEach(d =>
-                        localStorage.removeItem(d));
-
-                    localStorage.setItem('city', JSON.stringify(cData));
-                    localStorage.setItem('state', JSON.stringify(sData));
+                    for (var x = 0; x < stateData.length; x++) { 
+                        var fulltext = cityData[x] + ", " + stateData[x];
+                        if (lineText === fulltext) { 
+                            storedCities.splice(x, 1);
+                            storedStates.splice(x, 1);
+                            localStorage.setItem('city', JSON.stringify(storedCities));
+                            localStorage.setItem('state', JSON.stringify(storedStates)); 
+                        }
+                    }                   
                 }
 
             }
         });
 
         btn.addClass("delete is-small is-pulled-right");
-        li.addClass("city-list-item");
-        li.text(cityName + ", " + stateName);
+
         li.append(btn);
 
         $("#city-list").prepend(li);
