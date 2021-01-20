@@ -22,7 +22,7 @@ $(document).ready(function () {
     // Get stored data from localStorage and parse JSON strings to objects
     var storedCities = JSON.parse(localStorage.getItem("city")) || [];
     var storedStates = JSON.parse(localStorage.getItem("state")) || [];
-    
+
     var state;
     var city;
 
@@ -32,7 +32,7 @@ $(document).ready(function () {
 
         var cityData = JSON.parse(localStorage.getItem("city"));
         var stateData = JSON.parse(localStorage.getItem("state"));
-       
+
 
         for (var i = 0; i < cityData.length; i++) {
             renderCities(cityData[i], stateData[i]);
@@ -55,7 +55,7 @@ $(document).ready(function () {
         if (cityState === "") {
             return;
         }
-        
+
         // Split cityState into city and state array
         var splitState = cityState.split(",");
 
@@ -69,10 +69,10 @@ $(document).ready(function () {
 
             storedCities.push(city);
             storedStates.push(state);
-            
+
             localStorage.setItem("city", JSON.stringify(storedCities));
             localStorage.setItem("state", JSON.stringify(storedStates));
-           
+
 
             airQualityMetrics(city, state);
             covid19Metrics(state);
@@ -99,7 +99,7 @@ $(document).ready(function () {
         li.addClass("city-list-item");
         li.text(cityName + ", " + stateName);
         var lineText = li.text();
-        
+
         var btn = $('<button>', {
             id: id,
             // Logic to remove clicked city from site and local storage
@@ -107,17 +107,17 @@ $(document).ready(function () {
                 $(this).parent().hide();
                 var cityData = JSON.parse(localStorage.getItem("city"));
                 var stateData = JSON.parse(localStorage.getItem("state"));
-                
+
                 if (cityData && stateData) {
-                    for (var x = 0; x < stateData.length; x++) { 
+                    for (var x = 0; x < stateData.length; x++) {
                         var fulltext = cityData[x] + ", " + stateData[x];
-                        if (lineText === fulltext) { 
+                        if (lineText === fulltext) {
                             storedCities.splice(x, 1);
                             storedStates.splice(x, 1);
                             localStorage.setItem('city', JSON.stringify(storedCities));
-                            localStorage.setItem('state', JSON.stringify(storedStates)); 
+                            localStorage.setItem('state', JSON.stringify(storedStates));
                         }
-                    }                   
+                    }
                 }
 
             }
@@ -142,7 +142,7 @@ $(document).ready(function () {
     // Get air quality metrics, clear existing, and build new data points
     function airQualityMetrics(cityName, stateName) {
 
-        var queryURL = "https://api.weatherbit.io/v2.0/current/airquality?city=" + cityName + "&country=US&key=e5f946832cc34874b9250ae7016416e0";
+        var queryURL = "https://api.weatherbit.io/v2.0/current/airquality?city=" + cityName + "&country=US&key=432ba70ce40d4e45b1cfaad3b1e5432b";
 
         $.ajax({
             type: "GET",
