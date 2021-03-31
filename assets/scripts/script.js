@@ -142,7 +142,7 @@ $(document).ready(function () {
     // Get air quality metrics, clear existing, and build new data points
     function airQualityMetrics(cityName, stateName) {
 
-        var queryURL = "https://api.weatherbit.io/v2.0/current/airquality?city=" + cityName + "&country=US&key=432ba70ce40d4e45b1cfaad3b1e5432b";
+        var queryURL = "https://api.weatherbit.io/v2.0/current/airquality?city=" + cityName + "&country=US&key=b14aafe611b544759664c4a6de2da332";
 
         $.ajax({
             type: "GET",
